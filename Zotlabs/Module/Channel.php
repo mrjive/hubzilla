@@ -204,7 +204,7 @@ class Channel extends \Zotlabs\Web\Controller {
 				$_SESSION['loadtime'] = datetime_convert();
 			}
 			else {
-				$r = q("SELECT distinct parent AS item_id from item
+				$r = q("SELECT parent AS item_id from item
 					left join abook on ( item.owner_xchan = abook.abook_xchan $abook_uids )
 					WHERE uid = %d $item_normal_update
 					AND item_wall = 1 $simple_update
@@ -380,7 +380,7 @@ class Channel extends \Zotlabs\Web\Controller {
 		}
 
 		if((! $update) || ($checkjs->disabled())) {
-			$o .= alt_pager($a,count($items));
+			$o .= alt_pager(count($items));
 			if ($mid && $items[0]['title'])
 				\App::$page['title'] = $items[0]['title'] . " - " . \App::$page['title'];
 		}
